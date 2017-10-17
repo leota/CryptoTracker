@@ -1,6 +1,11 @@
 {
-  "name": "mytest",
-  "version": "0.0.0",
+  "name": "cryptotracker",
+  "version": "0.0.1",
+  "author": "Leonardo Maglio (https://github.com/leota)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:leota/CryptoTracker.git"
+  },
   "license": "MIT",
   "scripts": {
     "ng": "ng",
