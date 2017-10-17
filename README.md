@@ -25,3 +25,8 @@ Then insert desired cryptocurrencies to watch and invested amount.
 ```
 npm start
 ```
+
+## Build
+```
+npm run build
+```

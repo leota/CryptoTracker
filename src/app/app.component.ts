@@ -24,9 +24,9 @@ export class AppComponent implements OnInit {
     this.getAllResults();
   }
 
-  getAllResults() { // returns a promise for 250 results
+  getAllResults() {
     let prom, me = this;
-    for (let i = 0; i < me.data.length; i++) { // chain four more times
+    for (let i = 0; i < me.data.length; i++) {
       prom = me.http.retreiveData(me.data[i].currency, me.convert);
       prom = prom.then(res => {
         console.log(me.formatPrice)
