@@ -1,7 +1,28 @@
-<div>
-    <p>Invested Capital</p>
-    <p>{{convert}} {{investedCapital}}</p>
-</div>
-<div>
-    <p *ngFor="let item of statusList">{{item.name}}</p>
+<div class="container">
+    <div class="main-report">
+        <div>
+            <p class="medium" [ngClass]="currentCapital > investedCapital ? 'green' : 'red'">Current Capital</p>
+            <p class="xx-large" [ngClass]="currentCapital > investedCapital ? 'green' : 'red'">${{currentCapital | number:'1.2-2'}}</p>
+        </div>
+        <div>
+            <p class="gray small">Invested Capital</p>
+            <p class="gray medium">${{investedCapital | number:'1.2-2'}}</p>
+        </div>
+    </div>
+    <div>
+        <div class="coin-status" *ngFor="let item of statusList">
+            <p class="blue">{{item.name}} ({{item.symbol}})</p>
+            <p class="blue x-large">${{item.price | number:'1.2-5'}} <span class="medium">x {{item.amount}}</span></p>
+            <div class="status-detail-wrap">
+                <div class="status-detail">
+                    <p class="gray small">Invested Capital</p>
+                    <p class="gray medium">${{item.investedCapital | number:'1.2-2'}}</p>
+                </div>
+                <div class="status-detail">
+                    <p class="small" [ngClass]="item.currentCapital > item.investedCapital ? 'green' : 'red'">Current Capital</p>
+                    <p class="medium" [ngClass]="item.currentCapital > item.investedCapital ? 'green' : 'red'">${{item.currentCapital | number:'1.2-2'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+/* colors*/
+.gray {
+    color: #9E9E9E;
+}
+.green {
+    color: #4caf50;
+}
+.red {
+    color: #f44336;
+}
+.blue {
+    color: #2196f3;
+}
+.light-blue {
+    color: #00bcd4;
+}
+/* font sizes */
+.smaller {
+    font-size: smaller;
+}
+.small {
+    font-size: small;
+}
+.medium {
+    font-size: medium;
+}
+.large {
+    font-size: large;
+}
+.larger {
+    font-size: larger;
+}
+.x-large {
+    font-size: x-large;
+}
+.xx-large {
+    font-size: xx-large;
+}
+/* layout */
+.container {
+    margin: 15px;
+    text-align: center;
+}
+.main-report {
+    margin: 45px 0;
+}
+.coin-status {
+    border-bottom: 1px solid gray;
+    padding: 4px 0;
+    margin: 20px 0;
+    .status-detail-wrap {
+        margin: 8px 0;
+        .status-detail {
+            display: inline-block;
+            margin: 0 12px;
+        }
+    }
+}

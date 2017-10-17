@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, ViewRef } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { HttpService } from './http.service';
 import { config } from '../config';
 
