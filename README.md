@@ -35,3 +35,7 @@ npm start
 ```
 npm run build
 ```
+#### Production build
+```
+npm run build --production
+```
