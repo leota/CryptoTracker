@@ -1,5 +1,6 @@
 # CryptoTracker
-Simple app to keep track of your criptocurrencies investments
+Simple app to keep track of your criptocurrencies investments.
+<img src="/img/sample.png" style="max-width: 300px;"></img>
 
 ## Setup
 ```
