@@ -30,6 +30,7 @@ Then insert desired cryptocurrencies to watch and invested amount into newly cre
 ```
 npm start
 ```
+then open your browser on `http://localhost:4200/`
 
 ## Build
 ```
