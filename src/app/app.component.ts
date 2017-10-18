@@ -66,7 +66,6 @@ export class AppComponent implements OnInit {
       });
     }
     return prom.then(res => {
-      console.log('RES', me.statusList);
       me.statusList.sort(function (a, b) {
         return parseFloat(b.currentCapital) - parseFloat(a.currentCapital);
       });
@@ -79,7 +78,6 @@ export class AppComponent implements OnInit {
     data.forEach(el => {
       this.investedCapital += el.investedCapital;
     })
-    console.log('Invested:', this.investedCapital);
   }
 
   calculateCurrentCapital(data): void {
@@ -91,6 +89,5 @@ export class AppComponent implements OnInit {
     data.forEach(el => {
       this.currentCapital += el.currentCapital;
     })
-    console.log('CurrentCapital:', this.currentCapital);
   }
 }
