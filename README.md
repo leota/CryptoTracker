@@ -1,6 +1,6 @@
 # CryptoTracker
 <div>
-    <p>Simple app to keep track of your criptocurrencies investments.</p>
+    <p>Simple app to keep track of your criptocurrency investments.</p>
 </div>
 <div style="text-align: center;">
     <img src="/img/sample.png" style="display:block;max-width: 200px;"></img>
