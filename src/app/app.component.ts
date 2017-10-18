@@ -18,8 +18,14 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpService, private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.getInvestedCapital(this.data);
-    this.getAllResults();
+    let me = this;
+    me.getInvestedCapital(me.data);
+    me.getAllResults();
+    // Update data every 10 seconds
+    setInterval(function(){
+      me.statusList = [];
+      me.getAllResults();
+    }, 10000);
   }
 
   getAllResults() {
@@ -59,6 +65,11 @@ export class AppComponent implements OnInit {
   }
 
   calculateCurrentCapital(data): void {
+    // check if all data have been retreived
+    if(data.length != this.data.length) {
+      return;
+    }
+    this.currentCapital = 0;
     data.forEach(el => {
       this.currentCapital += el.currentCapital;
     })
