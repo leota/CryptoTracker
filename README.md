@@ -20,7 +20,7 @@ cp src/_config.ts src/config.ts
 ```
 On Windows
 ```
-copy .\\src\\_config.ts .\\src\\config.ts
+copy .\src\_config.ts .\src\config.ts
 ```
 
 Then insert desired cryptocurrencies to watch and invested amount into newly created `config.ts`
