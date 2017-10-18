@@ -52,6 +52,9 @@ export class AppComponent implements OnInit {
     return prom.then(res => {
       me.statusList.concat(res);
       console.log('RES', me.statusList);
+      me.statusList.sort(function(a, b) {
+        return parseFloat(b.currentCapital) - parseFloat(a.currentCapital);
+    });
       me.calculateCurrentCapital(me.statusList);
       me.ref.detectChanges();
     });
