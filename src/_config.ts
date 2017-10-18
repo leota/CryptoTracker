@@ -1,8 +1,7 @@
 /* 
     Fill data{} with the curriencies to watch and the amount invested. 
-    'convert' will convert results to this currency
     'amount' is the number of coins holded
-    'capitalInvested' money invested to buy those coins ($1000, or €1000 depending on converted value)
+    'capitalInvested' money invested to buy those coins, in US Dollars.
 
     (Full list of available cryptocurrencies: https://coinmarketcap.com/all/views/all/) 
 */
@@ -18,6 +17,5 @@ export const config = {
             amount: 2,
             investedCapital: 500
         }
-    ],
-    convert: 'USD'
+    ]
 };

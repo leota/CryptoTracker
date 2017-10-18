@@ -18,7 +18,7 @@ On Windows
 copy .\\src\\_config.ts .\\src\\config.ts
 ```
 
-Then insert desired cryptocurrencies to watch and invested amount.
+Then insert desired cryptocurrencies to watch and invested amount into newly created `config.ts`
 
 
 ## Run

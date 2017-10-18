@@ -11,8 +11,6 @@ import { config } from '../config';
 export class AppComponent implements OnInit {
 
   private data = config.data;
-  private convert = config.convert;
-  private formatPrice = 'price_' + this.convert.toLowerCase();
   private investedCapital: number = 0;
   private currentCapital: number = 0;
   private statusList: Array<any> = [];
@@ -27,15 +25,14 @@ export class AppComponent implements OnInit {
   getAllResults() {
     let prom, me = this;
     for (let i = 0; i < me.data.length; i++) {
-      prom = me.http.retreiveData(me.data[i].currency, me.convert);
+      prom = me.http.retreiveData(me.data[i].currency);
       prom = prom.then(res => {
-        console.log(me.formatPrice)
         let status = {
           name: res[0].name,
           percent_change_1h: res[0].percent_change_1h,
           percent_change_24h: res[0].percent_change_24h,
           percent_change_7d: res[0].percent_change_7d,
-          price: res[0][me.formatPrice],
+          price: res[0].price_usd,
           symbol: res[0].symbol,
           amount: me.data[i].amount,
           investedCapital: me.data[i].investedCapital
@@ -43,7 +40,7 @@ export class AppComponent implements OnInit {
         status['currentCapital'] = status.amount * (parseFloat(status.price));
         status['capitalDifference'] = status['currentCapital'] - status.investedCapital;
         me.statusList = me.statusList.concat(status);
-        return me.http.retreiveData(me.data[i].currency, me.convert);
+        return me.http.retreiveData(me.data[i].currency);
       });
     }
     return prom.then(res => {
@@ -65,6 +62,6 @@ export class AppComponent implements OnInit {
     data.forEach(el => {
       this.currentCapital += el.currentCapital;
     })
-    console.log('Current:', this.currentCapital);
+    console.log('CurrentCapital:', this.currentCapital);
   }
 }
