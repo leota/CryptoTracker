@@ -19,42 +19,57 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     let me = this;
+    me.statusListInit(me.data.length);
     me.getInvestedCapital(me.data);
-    me.getAllResults();
+    me.statusListUpdate();
     // Update data every 10 seconds
-    setInterval(function(){
-      me.statusList = [];
-      me.getAllResults();
+    setInterval(function () {
+      me.statusListUpdate();
     }, 10000);
   }
 
-  getAllResults() {
+  statusListInit(length: number) {
+    for (let i = 0; i < length; i++) {
+      let status = {
+        name: '',
+        percent_change_1h: '',
+        percent_change_24h: '',
+        percent_change_7d: '',
+        price: 0,
+        symbol: '',
+        amount: 0,
+        investedCapital: 0,
+        currentCapital: 0,
+        capitalDifference: 0
+      };
+      this.statusList.push(status);
+    }
+  }
+
+  statusListUpdate() {
     let prom, me = this;
     for (let i = 0; i < me.data.length; i++) {
       prom = me.http.retreiveData(me.data[i].currency);
       prom = prom.then(res => {
-        let status = {
-          name: res[0].name,
-          percent_change_1h: res[0].percent_change_1h,
-          percent_change_24h: res[0].percent_change_24h,
-          percent_change_7d: res[0].percent_change_7d,
-          price: res[0].price_usd,
-          symbol: res[0].symbol,
-          amount: me.data[i].amount,
-          investedCapital: me.data[i].investedCapital
-        };
-        status['currentCapital'] = status.amount * (parseFloat(status.price));
-        status['capitalDifference'] = status['currentCapital'] - status.investedCapital;
-        me.statusList = me.statusList.concat(status);
+        me.statusList[i].name = res[0].name;
+        me.statusList[i].percent_change_1h = res[0].percent_change_1h;
+        me.statusList[i].percent_change_24h = res[0].percent_change_24h;
+        me.statusList[i].percent_change_7d = res[0].percent_change_7d;
+        me.statusList[i].price = res[0].price_usd;
+        me.statusList[i].symbol = res[0].symbol;
+        me.statusList[i].amount = me.data[i].amount;
+        me.statusList[i].investedCapital = me.data[i].investedCapital;
+        me.statusList[i].currentCapital = me.statusList[i].amount * (parseFloat(me.statusList[i].price));
+        me.statusList[i].capitalDifference = me.statusList[i].currentCapital - me.statusList[i].investedCapital;
+
         return me.http.retreiveData(me.data[i].currency);
       });
     }
     return prom.then(res => {
-      me.statusList.concat(res);
       console.log('RES', me.statusList);
-      me.statusList.sort(function(a, b) {
+      me.statusList.sort(function (a, b) {
         return parseFloat(b.currentCapital) - parseFloat(a.currentCapital);
-    });
+      });
       me.calculateCurrentCapital(me.statusList);
       me.ref.detectChanges();
     });
@@ -69,7 +84,7 @@ export class AppComponent implements OnInit {
 
   calculateCurrentCapital(data): void {
     // check if all data have been retreived
-    if(data.length != this.data.length) {
+    if (data.length != this.data.length) {
       return;
     }
     this.currentCapital = 0;
